@@ -6,42 +6,50 @@ var app = new Vue ( {
         
         mainMenuItems : [
             {
+                type : 'text' ,
                 innerHtml : 'Home' ,
                 class : 'main-menu-item active-item'
             } ,
 
             {
+                type : 'text' ,
                 innerHtml : 'Apple' ,
                 class : 'main-menu-item'
             } ,
 
             {
+                type : 'text' ,
                 innerHtml : 'Microsoft' ,
                 class : 'main-menu-item'
             } ,
 
             {
+                type : 'text' ,
                 innerHtml : 'Android' ,
                 class : 'main-menu-item'
             } ,
 
             {
+                type : 'text' ,
                 innerHtml : 'Forum' ,
                 class : 'main-menu-item'
             } ,
             
             {
+                type : 'text' ,
                 innerHtml : 'Contact us' ,
                 class : 'main-menu-item'
             } ,
 
             {
-                innerHtml : '<button class="btn btn-black">Join us</button>' ,
-                class : 'main-menu-item join-us-button'
+                type : 'button' ,
+                innerHtml : 'Join us' ,
+                class : 'main-menu-item'
             } ,
 
             {
-                innerHtml : '<i class="fas fa-search"></i>' ,
+                type : 'icon' ,
+                innerHtml : '' ,
                 class : 'main-menu-item header-search-button'
             }
         ] ,
@@ -127,6 +135,26 @@ var app = new Vue ( {
 
                 outputHtml += '</ul>'
             }
+            return outputHtml;
+        } ,
+        getMenuItem(index) {
+            var currentItem = this.mainMenuItems[index];
+            var outputHtml = '';
+            
+            if(currentItem.type == 'button' ){
+                outputHtml += '<button class="btn">' +
+                currentItem.innerHtml +
+                '</button>';
+            }
+            else if(currentItem.type == 'icon') {
+                outputHtml += '<i>'+
+                currentItem.innerHtml +
+                '</i>';
+            }
+            else {
+                outputHtml += currentItem.innerHtml;
+            }
+
             return outputHtml;
         }
     }

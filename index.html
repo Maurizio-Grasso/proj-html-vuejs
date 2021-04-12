@@ -34,8 +34,8 @@
 
                     <nav class="header-nav">
                         <ul class="main-menu inline-list text-white flex-container">
-                            <li v-for="item in mainMenuItems" 
-                                v-html="item.innerHtml"
+                            <li v-for="(item , index) in mainMenuItems" 
+                                v-html="getMenuItem(index)"
                                 :class="item.class"
                                 class="margin-l-more cursor-pointer set-relative">
                             </li>

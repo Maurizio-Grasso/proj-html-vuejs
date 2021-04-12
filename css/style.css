@@ -55,7 +55,9 @@ button.btn {
     border-radius: 2px;
     color: white;
 }
-button.btn-black {
+
+button.btn-black , 
+.header button {
     background-color: black;
 }
 
@@ -141,9 +143,16 @@ section.black-box a::after {
     line-height: 5rem;
     text-align: center;
 }
+
 .main-menu .main-menu-item.header-search-button {
     text-align: right;
     min-width:unset;
+}
+.main-menu .main-menu-item.header-search-button::before {
+    content: '\f002';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 2rem;
 }
 
 .main-menu .main-menu-item.active-item::after , 
