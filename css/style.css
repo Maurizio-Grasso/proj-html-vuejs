@@ -1,0 +1,13 @@
+
+/* Reset and Defaults */
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+
+/* layout general */
+
+.inner-wrapper {
+    max-width: 1240px;
+}
