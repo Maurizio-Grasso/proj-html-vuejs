@@ -26,11 +26,23 @@
         <header class="header">
 
             <section class="header-menu-bar">
-                <div class="inner-wrapper">
+                <div class="inner-wrapper flex-container ">
 
-                    <!-- header top bar -->
+                    <div class="outer-logo">
+                        <img class="cursor-pointer" :src="logoSrc" alt="">
+                    </div>
 
-                </div>
+                    <nav class="header-nav">
+                        <ul class="main-menu inline-list text-white flex-container">
+                            <li v-for="item in mainMenuItems" 
+                                v-html="item.innerHtml"
+                                :class="item.class"
+                                class="margin-l-more cursor-pointer set-relative">
+                            </li>
+                        </ul><!-- Main Menu UL END -->
+                    </nav><!-- Main Menu Nav END -->
+
+                </div><!-- Inner Wrapper Header END -->
             </section><!-- Header-Top-Bar Section END -->
 
             <section class="jumbotron">
@@ -176,14 +188,34 @@
         <footer class="footer">
 
             <section class="footer-menus">
-                <div class="inner-wrapper">
-                    <!-- content-here -->
+                <div class="inner-wrapper high-padding-section">
+                    
+                    <div class="footer-menus-container flex-container">
+                        <div v-for="(menu , index) in footerMenus"
+                             class="single-footer-menu-outer"
+                             v-html="printFooterMenu(index)">
+                        </div>
+                    </div><!-- Footer Menu Container END-->
+
                 </div>
             </section><!-- Footer-Menus Section END -->
 
             <section class="footer-bottom-bar">
-                <div class="inner-wrapper">
-                    <!-- content-here -->
+                <div class="inner-wrapper flex-container padding-t-more padding-b-more">
+
+                    <div class="copyright-bar">
+                        <span v-html="copyrightBar"></span>
+                    </div>
+
+                    <nav class="social-icons">
+                        <ul class="inline-list text-center text-white">
+                            <li v-for="icon in footerSocialIcons" 
+                                v-html="icon.iconHtml" 
+                                :style="'background-color:'+icon.color+';'"
+                                class="cursor-pointer margin-l-more"
+                                ></li>
+                        </ul>
+                    </nav>
                 </div>
             </section><!-- Footer-bottom-Bar Section END -->
             
