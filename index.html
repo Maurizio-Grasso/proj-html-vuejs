@@ -34,10 +34,11 @@
 
                     <nav class="header-nav">
                         <ul class="main-menu inline-list text-white flex-container">
-                            <li v-for="(item , index) in mainMenuItems" 
-                                v-html="getMenuItem(index)"
+                            <li v-for="(item) in mainMenuItems" 
+                                v-html="printMenuItem(item)"
                                 :class="item.class"
-                                class="margin-l-more cursor-pointer set-relative">
+                                :onclick="item.onclick"
+                                class="main-menu-item margin-l-more cursor-pointer set-relative">
                             </li>
                         </ul><!-- Main Menu UL END -->
                     </nav><!-- Main Menu Nav END -->
@@ -71,14 +72,55 @@
             </section><!-- Place-to-Be section END -->
             
             <section class="latest-news">
-                <div class="inner-wrapper high-padding-section">
+                
+                <div class="inner-wrapper high-padding-section text-center">
 
-                    <!-- article-box * 6 -->
-                    <!-- article featured * 1 -->
-                    <!-- last review * 1 -->
-                    <!-- latest tutorial & guides * 1 -->
+                    <span class="text-more-spacing">phasellus eget mesus</span>
+                    <h2>All The Latest News</h2>
+                    <hr class="custom-separator">
+
+                    <div class="news-box-container flex-container">
+
+                        <div class="single-news-box article-preview">
+
+                        </div>
+
+                        <div class="single-news-box article-preview">
+
+                        </div>
+
+                        <div class="single-news-box article-preview">
+
+                        </div>
+
+                        <div class="single-news-box article-preview">
+
+                        </div>
+
+                        <div class="single-news-box article-preview">
+
+                        </div>
+
+                        <div class="single-news-box article-preview">
+
+                        </div>
+
+                        <div class="single-news-box featured-article">
+
+                        </div>
+
+                        <div class="single-news-box featured-review">
+
+                        </div>
+
+                        <div class="single-news-box latest-tutorials">
+
+                        </div>
+
+                    </div>                    
                     
                 </div>
+
             </section><!-- Latest-News Section END -->
 
             <section class="go-to-blog black-box set-relative text-uppercase text-white">
@@ -191,9 +233,9 @@
                 <div class="inner-wrapper high-padding-section">
                     
                     <div class="footer-menus-container flex-container">
-                        <div v-for="(menu , index) in footerMenus"
+                        <div v-for="(menu) in footerMenus"
                              class="single-footer-menu-outer"
-                             v-html="printFooterMenu(index)">
+                             v-html="printFooterMenu(menu)">
                         </div>
                     </div><!-- Footer Menu Container END-->
 

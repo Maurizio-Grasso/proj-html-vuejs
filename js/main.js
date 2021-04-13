@@ -5,82 +5,147 @@ var app = new Vue ( {
         logoSrc : 'img/logo-2x.png' ,
         
         mainMenuItems : [
+
+            //  Ogni oggetto di questo array corrisponderà ad un <li> del menu.
+            //
+            //  Struttura di base dell'oggetto (tutte le proprietà sono facoltative):
+            //
+            //
+            // {
+            //     name :      '' ,                         Nome della voce del menu
+            //     class :     '' ,                         Classi assegnate all'elemento <li>
+            //     onclick:    '' ,                         Evento assegnato al click dell'elemento <li>
+            //     childElement : {                         Oggetto corrispondente ad un eventuale elemento figlio di <li>
+            //         tag :      '' ,                      tag dell'elemento figlio (Esempi: 'a' , 'button' , 'i')
+            //         class: false ,                       classi assegnate all'elemento figlio
+            //         attributes : {                       Attributi dell'elemento figlio: ogni proprietà dell'oggetto corrisponde ad un attributo. Esempi:
+            //                                                  href    : '/about.html' ,
+            //                                                  onclick : 'myFunction()'
+            //                                                  rel     : 'nofollow,
+            //             } ,
+            //         }
+            // }
             {
-                type : 'text' ,
-                innerHtml : 'Home' ,
-                class : 'main-menu-item active-item'
+                name :           'Home' ,
+                class :          'active-item' ,
+                childElement : {
+                    tag :           'a' ,
+                    class:          false ,
+                    attributes : {                            
+                            href :  '#' ,
+                        } ,                
+                    }
             } ,
 
             {
-                type : 'text' ,
-                innerHtml : 'Apple' ,
-                class : 'main-menu-item'
+                name :      'Apple' ,
+                class :     '' ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {                            
+                            href : '' ,
+                        } ,                
+                    }
             } ,
-
             {
-                type : 'text' ,
-                innerHtml : 'Microsoft' ,
-                class : 'main-menu-item'
+                name :      'Microsoft' ,
+                class :     '' ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {                            
+                            href : '' ,
+                        } ,                
+                    }
             } ,
-
             {
-                type : 'text' ,
-                innerHtml : 'Android' ,
-                class : 'main-menu-item'
+                name :      'Android' ,
+                class :     '' ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {                            
+                            href : '' ,
+                        } ,                
+                    }
             } ,
-
             {
-                type : 'text' ,
-                innerHtml : 'Forum' ,
-                class : 'main-menu-item'
+                name :      'Forum' ,
+                class :     '' ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {                            
+                            href : '' ,
+                        } ,                
+                    }
             } ,
-            
             {
-                type : 'text' ,
-                innerHtml : 'Contact us' ,
-                class : 'main-menu-item'
+                name :      'Contact us' ,
+                class :     '' ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {                            
+                            href : '' ,
+                        } ,                
+                    }
             } ,
-
             {
-                type : 'button' ,
-                innerHtml : 'Join us' ,
-                class : 'main-menu-item'
+                name :      'Join us' ,
+                class :     '' ,
+                childElement : {
+                    tag :      'button' ,
+                    class: 'btn btn-black' ,
+                    }
             } ,
-
             {
-                type : 'icon' ,
-                innerHtml : '' ,
-                class : 'main-menu-item header-search-button'
-            }
+                name :      '' ,
+                class :     'search-button' ,
+                onclick :   'app.search()',
+                childElement : {
+                    tag :      'i' ,
+                    class: 'fas fa-search' ,
+                    }
+            } 
         ] ,
+        
+        copyrightBar : '&copy; Copyright 2012 - 2021' +
+            ' &vert; Avada Theme by <a href="#">Theme Fusion</a> &vert; ' + 
+            'All Rights Reserved &vert; ' +
+            'Powered by <a href="#">WordPress</a>' ,
         
         footerMenus : [
             {
                 heading : 'avada tech forum' ,
-                type : 'p' ,
+                childTag : 'p' ,
                 content : 'Quibusdam praesentium, voluptatem placeat dolore, officia porro voluptatum et cum eligendi deleniti, cupiditate quos quis fugit molestiae iure repudiandae. Minima, repudiandae illum.'
             } ,
+
             {
                 heading : 'popular topics' ,
-                type : 'ul' ,
+                childTag : 'ul' ,
                 content : [ 'commodi blanditiis repudiandae illum officia porro' , 
                             'eligendi deleniti dignissimos magni' , 
                             'Repudiandae minus quis praesentium eligendi deleniti' , 
                             'placeat dolore quia id elit' 
                         ]
             } ,
+
             {
                 heading : 'recent topics' ,
-                type : 'ul' ,
+                childTag : 'ul' ,
                 content : [ 'Quibusdam praesentium sit amet' , 
                             'Lorem ipsum dolor officia porro' , 
                             'placeat dolore praesentium consectetur adipisicing' , 
                             'ex laboriosam a quos quis fugit' 
                         ]
             } ,
+
             {
                 heading : 'latest replies' ,
-                type : 'ul' ,
+                childTag : 'ul' ,
                 content : [ 'et cum eligendi sunt repellat' , 
                             'consectetur eius nisi quos quis fugit officia porro' , 
                             'cupiditate quos ullam voluptates' , 
@@ -110,52 +175,49 @@ var app = new Vue ( {
               iconHtml  : '<i class="fab fa-youtube"></i>' ,
               color : '#cd201f'
             }
-        ] ,
+        ]
 
-        copyrightBar : '&copy; Copyright 2012 - 2021' +
-            ' &vert; Avada Theme by <a href="#">Theme Fusion</a> &vert; ' + 
-            'All Rights Reserved &vert; ' +
-            'Powered by <a href="#">WordPress</a>'
     } ,
     methods : {
-        printFooterMenu(index) {
-            var currentMenu = this.footerMenus[index];
-            var outputHtml = '<h4>'+ currentMenu.heading +'</h4>';
 
-            if (currentMenu.type == 'p') {
-                outputHtml += '<p>' + currentMenu.content + '<p>' ;
-            }
-            else if(currentMenu.type == 'ul') {
-                
-                outputHtml += '<ul>'
-                
-                currentMenu.content.forEach( item => {
-                    outputHtml += '<li><a href="#">' + item + '</a></li>';
-                });
-
-                outputHtml += '</ul>'
-            }
-            return outputHtml;
+        search() {
+            alert("Search Button Clicked");
         } ,
-        getMenuItem(index) {
-            var currentItem = this.mainMenuItems[index];
-            var outputHtml = '';
-            
-            if(currentItem.type == 'button' ){
-                outputHtml += '<button class="btn">' +
-                currentItem.innerHtml +
-                '</button>';
-            }
-            else if(currentItem.type == 'icon') {
-                outputHtml += '<i>'+
-                currentItem.innerHtml +
-                '</i>';
-            }
-            else {
-                outputHtml += currentItem.innerHtml;
-            }
 
-            return outputHtml;
+        printFooterMenu(menu) {
+            var outputHtml = '';
+            if(menu.childTag == 'p') {
+                outputHtml = menu.content;
+            }
+            else if(menu.childTag == 'ul') {                
+                menu.content.forEach( item => {
+                    outputHtml += `<li><a href="#">${item}</a></li>`;
+                });
+            }
+            return `<h4>${menu.heading}</h4><${menu.childTag}>${outputHtml}</${menu.childTag}>`;
+        } ,
+
+        printMenuItem(item) {
+
+            if(!item.childElement) {
+                return item.name;            
+            }
+            
+            else {                
+                var childElement = item.childElement;
+                var outputHtml = `<${childElement.tag}`; 
+                
+                if(childElement.class){
+                    outputHtml += ` class="${childElement.class}"`;
+                }
+                
+                if(childElement.attributes){
+                    for(let key in childElement.attributes) {
+                        outputHtml += ` ${key}="${childElement.attributes[key]}"`;
+                    }
+                }                
+                return outputHtml + `>${item.name}</${childElement.tag}>`;
+            }
         }
     }
 });

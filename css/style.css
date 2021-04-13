@@ -49,15 +49,15 @@ button {
     font-size: 1.5rem;
 }
 
-button.btn {
+.btn {
     text-transform: uppercase;
     font-weight: 700;
     border-radius: 2px;
     color: white;
 }
 
-button.btn-black , 
-.header button {
+.btn-black , 
+.header .btn {
     background-color: black;
 }
 
@@ -144,19 +144,14 @@ section.black-box a::after {
     text-align: center;
 }
 
-.main-menu .main-menu-item.header-search-button {
+.main-menu .main-menu-item.search-button {
     text-align: right;
     min-width:unset;
-}
-.main-menu .main-menu-item.header-search-button::before {
-    content: '\f002';
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
     font-size: 2rem;
 }
 
 .main-menu .main-menu-item.active-item::after , 
-.main-menu .main-menu-item:not(.header-search-button):hover::after {
+.main-menu .main-menu-item:not(.search-button):hover::after {
     content: '';
     display: block;
     position: absolute;
@@ -171,6 +166,7 @@ section.black-box a::after {
 }
 
 /*  Jumbotron   */
+
 section.jumbotron {
     background-image: url('../img/home_slider_bg.jpg');
     background-position: center;
@@ -207,6 +203,33 @@ section.place-to-be p {
 
 .place-to-be .inner-wrapper {
     max-width: 800px;
+}
+
+/* Latest News Section */
+
+.news-box-container.flex-container {
+    display: none !important; /* debug */
+    flex-wrap: wrap;
+}
+
+.news-box-container .single-news-box {
+    flex : 0 0 calc( 100% / 3 );
+
+    border: 1px solid red; /* debug */
+    height: 200px;
+    margin-bottom: var(--spacing-more);
+}
+
+.news-box-container .single-news-box.featured-article {
+
+}
+
+.news-box-container .single-news-box.featured-review {
+    
+}
+
+.news-box-container .single-news-box.latest-tutorials {
+    
 }
 
 /* Forum Sections   */
