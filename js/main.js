@@ -25,18 +25,20 @@ var app = new Vue ( {
             //             } ,
             //         }
             // }
-            {
+            
+            
+            {    
                 name :           'Home' ,
                 class :          'active-item' ,
                 childElement : {
                     tag :           'a' ,
                     class:          false ,
                     attributes : {                            
-                            href :  '#' ,
-                        } ,                
-                    }
+                        href :  '#' ,
+                    } ,                
+                }
             } ,
-
+            
             {
                 name :      'Apple' ,
                 class :     '' ,
@@ -44,9 +46,9 @@ var app = new Vue ( {
                     tag :      'a' ,
                     class: false ,
                     attributes : {                            
-                            href : '' ,
-                        } ,                
-                    }
+                        href : '' ,
+                    } ,                
+                }
             } ,
             {
                 name :      'Microsoft' ,
@@ -55,9 +57,9 @@ var app = new Vue ( {
                     tag :      'a' ,
                     class: false ,
                     attributes : {                            
-                            href : '' ,
-                        } ,                
-                    }
+                        href : '' ,
+                    } ,                
+                }
             } ,
             {
                 name :      'Android' ,
@@ -66,9 +68,9 @@ var app = new Vue ( {
                     tag :      'a' ,
                     class: false ,
                     attributes : {                            
-                            href : '' ,
-                        } ,                
-                    }
+                        href : '' ,
+                    } ,                
+                }
             } ,
             {
                 name :      'Forum' ,
@@ -77,9 +79,9 @@ var app = new Vue ( {
                     tag :      'a' ,
                     class: false ,
                     attributes : {                            
-                            href : '' ,
-                        } ,                
-                    }
+                        href : '' ,
+                    } ,                
+                }
             } ,
             {
                 name :      'Contact us' ,
@@ -88,10 +90,31 @@ var app = new Vue ( {
                     tag :      'a' ,
                     class: false ,
                     attributes : {                            
-                            href : '' ,
+                        href : '' ,
+                    } ,                
+                }
+            } ,
+            {    
+                name :           '' ,
+                class :          'outer-logo' ,
+                childElement : {
+                    tag :           'img' ,
+                    class:          'header-logo cursor-pointer' ,
+                    attributes : {                            
+                            src :  'img/logo-2x.png' ,
+                            alt : 'avada forum logo'
                         } ,                
                     }
             } ,
+            {
+                name :      '' ,
+                class :     'search-button cursor-pointer' ,
+                onclick :   'app.search()',
+                childElement : {
+                    tag :      'i' ,
+                    class: 'fas fa-search' ,
+                    }
+            } , 
             {
                 name :      'Join us' ,
                 class :     '' ,
@@ -100,15 +123,6 @@ var app = new Vue ( {
                     class: 'btn btn-black' ,
                     }
             } ,
-            {
-                name :      '' ,
-                class :     'search-button' ,
-                onclick :   'app.search()',
-                childElement : {
-                    tag :      'i' ,
-                    class: 'fas fa-search' ,
-                    }
-            } 
         ] ,
         
         copyrightBar : '&copy; Copyright 2012 - 2021' +
@@ -181,6 +195,7 @@ var app = new Vue ( {
     methods : {
 
         search() {
+            // Metodo richiamato al click sul pulsante di ricerca
             alert("Search Button Clicked");
         } ,
 
@@ -198,6 +213,7 @@ var app = new Vue ( {
         } ,
 
         printMenuItem(item) {
+        //  Questo metodo stampa le voci del menu principale in base ai dati contentui nell'array 'mainMenuItems'
 
             if(!item.childElement) {
                 return item.name;            
@@ -215,8 +231,17 @@ var app = new Vue ( {
                     for(let key in childElement.attributes) {
                         outputHtml += ` ${key}="${childElement.attributes[key]}"`;
                     }
-                }                
-                return outputHtml + `>${item.name}</${childElement.tag}>`;
+                }
+                
+                outputHtml += '>';
+
+                if(childElement.tag != 'img') {
+                    // Not Self Closing Tags
+                    outputHtml += `${item.name}</${childElement.tag}>`;
+                }
+
+                return outputHtml;
+
             }
         }
     }

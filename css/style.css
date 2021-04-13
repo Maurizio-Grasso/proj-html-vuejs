@@ -7,7 +7,7 @@
 --gray-light:       #cfcfcf;
 
 --spacing-more: calc(var(--spacing-standard) * 3); /* = 30px */
---header-menu-height:    10rem;
+--header-nav-height:    10rem;
 }
 
 body {
@@ -15,6 +15,16 @@ body {
     color: var(--color-text);
     font-size: 1.5rem;
     letter-spacing: 1px;
+}
+
+a ,
+a:link ,
+a:visited {
+    color : black;
+    transition: color .25s;
+}
+a:hover {
+    color: var(--color-primary);
 }
 
 /*  ##### ##### ##### LAYOUT ##### ##### ##### */
@@ -42,21 +52,15 @@ button {
     font-weight: 700;
     border-radius: 2px;
     color: white;
+    transition: background-color .25s;
 }
 
-.btn-black , 
-.header .btn {
+.btn.btn-black {
     background-color: black;
 }
 
-a ,
-a:link ,
-a:visited {
-    color : black;
-    transition: color .25s;
-}
-a:hover {
-    color: var(--color-primary);
+.btn:hover {
+    background-color: var(--color-secondary);
 }
 
 /*  ##### ##### ##### HEADINGS ##### ##### ##### */
@@ -128,39 +132,27 @@ section.black-box a::after {
     content: ' \27F6';
 }
 
-/*  ##### ##### ##### HEADER ##### ##### ##### */
+/*  ##### ##### ##### HEADER NAV ##### ##### ##### */
 
-/* Header Menu Bar*/
+.header {
+    margin-top: var(--header-nav-height);
+}
 
 .header a {
     color: white;
 }
 
-.header .header-menu-bar {
-    height: var(--header-menu-height);
+.header .header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
     background-color: var(--color-primary);
 }
 
-.header-menu-bar .outer-logo img {
-    max-height: 6rem;
-    transform: translateY(-4px);    /* align with menu items*/
-}
-
-.header-menu-bar .flex-container {
-    justify-content: space-between;
-}
-
-.header-menu-bar .flex-container .header-nav {
-    flex: 1 0 auto;
-}
-
-.header-menu-bar .inner-wrapper ,
-.header-menu-bar .inner-wrapper nav.header-nav ,
-.header-menu-bar .inner-wrapper nav.header-nav ul.main-menu {
-    height: 100%;
-}
-
-.header-menu-bar .header-nav .main-menu.flex-container {
+.main-menu.flex-container {
+    height: var(--header-nav-height);
     justify-content: flex-end;
 }
 
@@ -168,23 +160,40 @@ section.black-box a::after {
     min-width: 5rem;
     height: 5rem;
     line-height: 5rem;
-    text-align: center;
+    margin: 0 2rem;
+    text-align: center; 
 }
 
-.main-menu .main-menu-item.search-button {
-    text-align: right;
+.main-menu .main-menu-item.outer-logo {
+    order: -1;
+    flex-grow: 1;
+    height: auto;
+    transform: translateY(-.6rem);
+    margin-left: 0;
+    text-align: left;
+}
+.main-menu .outer-logo img {
+    display: block;
+    max-height: 6rem;
+}
+
+.main-menu .search-button {
+    order: 1;
     min-width:unset;
+    margin-right: 0;    
     font-size: 2rem;
+    text-align: right;
 }
 
 .main-menu .main-menu-item.active-item::after , 
-.main-menu .main-menu-item:not(.search-button):hover::after {
+.main-menu .main-menu-item:not(.search-button):not(.outer-logo):hover::after {
+    /*  Triangolino che appare sotto le voci attive ed hover del menu */
     content: '';
     display: block;
     position: absolute;
     left: 50%;
     transform: translate(-50% , 100%);
-    bottom: calc( (var(--header-menu-height) - 5rem) / 2 * -1);
+    bottom: calc( (var(--header-nav-height) - 5rem) / 2 * -1);
 
     border-top: 1.5rem solid var(--color-primary);
     border-bottom: 1.5rem solid transparent;
@@ -192,7 +201,7 @@ section.black-box a::after {
     border-right: 1.5rem solid transparent;
 }
 
-/*  Jumbotron   */
+/*  ##### ##### ##### JUMBOTRON ##### ##### ##### */
 
 section.jumbotron {
     background-image: url('../img/home_slider_bg.jpg');
@@ -201,7 +210,7 @@ section.jumbotron {
 }
 
 .inner-jumbotron.flex-container {
-    min-height: calc(100vh - var(--header-menu-height));
+    min-height: calc(100vh - var(--header-nav-height));
     height: 100%;
     flex-direction: column;
     justify-content: center;
@@ -211,6 +220,11 @@ section.jumbotron {
 .jumbotron p {
     font-size: 2.4rem;
     line-height: 3rem;
+}
+
+.jumbotron button.btn {
+    padding: 1.7rem 4rem;
+    font-size: 1.8rem;
 }
 
 /*  ##### ##### ##### MAIN ##### ##### ##### */
@@ -248,12 +262,9 @@ section.place-to-be p {
     flex-basis: calc( (100% - var(--spacing-standard) ) / 3 * 2 );
 }
 
-
-
 /* Latest News Section (Sigle Card) */
 
         /* article preview */
-
 
 .article-preview span.article-metadata{
     display: block;
@@ -298,7 +309,6 @@ img.article-image {
     margin-left: 0;
 }
 
-
 /* Forum Sections   */
 
 .forum-sections .cards-container {
@@ -332,7 +342,6 @@ img.article-image {
     border-radius: 50%;
 }
 
-
 /* Join US */
 
 section.join-us {
@@ -364,7 +373,6 @@ border: 1px solid var(--gray-light);
 }
 
 /*  ##### ##### ##### FOOTER ##### ##### ##### */
-
 
 /* Footer Menus (top bar) */
 
