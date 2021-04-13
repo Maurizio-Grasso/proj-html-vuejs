@@ -17,18 +17,6 @@ body {
     letter-spacing: 1px;
 }
 
-p {
-    margin: 0;
-}
-
-ul {
-    list-style-type: none;
-}
-
-input {
-    outline: none;
-}
-
 /*  ##### ##### ##### LAYOUT ##### ##### ##### */
 
 .inner-wrapper {
@@ -61,6 +49,46 @@ button {
     background-color: black;
 }
 
+a ,
+a:link ,
+a:visited {
+    color : black;
+    transition: color .25s;
+}
+a:hover {
+    color: var(--color-primary);
+}
+
+/*  ##### ##### ##### HEADINGS ##### ##### ##### */
+
+h1 {
+    font-size: 15rem;
+    line-height: 15rem;
+}
+
+h2 {
+    font-size: 4rem;
+    line-height: 5rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+}
+
+h4 {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+}
+
+h2 ,
+h3 ,
+h4 {
+    color:black;
+}
+
+
+
 /*  ##### ##### ##### UTILITIES ##### ##### ##### */
 
 .bg-lightgray {
@@ -70,22 +98,10 @@ button {
 .text-more-spacing {
     letter-spacing: 5px;
     display: block;
-    color: black;
     font-weight: 400;
     text-transform: uppercase;
-    margin-bottom: var(--spacing-more);
 }
 
-h2 ,
-h3 ,
-h4 {
-    color:black;
-}
-
-h2 {
-    font-size: 4rem;
-    line-height: 5rem;
-}
 
 .custom-separator {
     max-width: 8rem;
@@ -93,12 +109,19 @@ h2 {
     border: 1px solid var(--color-secondary);
 }
 
-/* Black Boxes */
-
 section.black-box {
     height: 15rem;
     background-color: black;
     font-weight: 700;
+    font-size: 1.2em;
+    transition: background-color .5s;
+}
+section.black-box:hover {
+    background-color: var(--color-primary);
+}
+
+.black-box a {
+    color: white;
 }
 
 section.black-box a::after {
@@ -108,6 +131,10 @@ section.black-box a::after {
 /*  ##### ##### ##### HEADER ##### ##### ##### */
 
 /* Header Menu Bar*/
+
+.header a {
+    color: white;
+}
 
 .header .header-menu-bar {
     height: var(--header-menu-height);
@@ -181,11 +208,6 @@ section.jumbotron {
     align-items: flex-start;
 }
 
-.jumbotron h1 {
-    font-size: 15rem;
-    line-height: 15rem;
-}
-
 .jumbotron p {
     font-size: 2.4rem;
     line-height: 3rem;
@@ -205,32 +227,77 @@ section.place-to-be p {
     max-width: 800px;
 }
 
-/* Latest News Section */
+/* Latest News Section (General Layoyt) */
 
-.news-box-container.flex-container {
-    display: none !important; /* debug */
+.news-box-container.flex-container {    
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
 .news-box-container .single-news-box {
-    flex : 0 0 calc( 100% / 3 );
-
-    border: 1px solid red; /* debug */
-    height: 200px;
+    flex : 0 0 calc( (100% - ( var(--spacing-more) * 2 ) ) / 3 );    
     margin-bottom: var(--spacing-more);
 }
 
-.news-box-container .single-news-box.featured-article {
-
+.news-box-container .single-news-box.featured-blog-post {
+    flex-basis: 100%;
 }
 
 .news-box-container .single-news-box.featured-review {
-    
+    flex-basis: calc( (100% - var(--spacing-standard) ) / 3 * 2 );
 }
 
-.news-box-container .single-news-box.latest-tutorials {
-    
+
+
+/* Latest News Section (Sigle Card) */
+
+        /* article preview */
+
+
+.article-preview span.article-metadata{
+    display: block;
 }
+
+img.article-image {
+    display: block;
+}
+
+.blog-post-preview img.article-image {
+    width: 100%;
+}
+        /* featured article (post and reviews) */
+
+.single-news-box.featured-article {
+    padding: 12rem 5rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.single-news-box.featured-blog-post {
+    background-image: url('../img/featured_article_1_bg.jpg');
+}
+.single-news-box.featured-review {
+    background-image: url('../img/featured_article_2_bg.jpg');
+}
+
+.single-news-box.featured-article h4 {
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+        /* latest tutorials */
+
+.tutorial-preview img.article-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.latest-tutorials hr.custom-separator {
+    margin-left: 0;
+}
+
 
 /* Forum Sections   */
 
@@ -265,10 +332,6 @@ section.place-to-be p {
     border-radius: 50%;
 }
 
-.forum-section-card h3 {
-    font-size: 2.2rem;
-    line-height: 2.6rem;
-}
 
 /* Join US */
 
@@ -297,16 +360,13 @@ border: 1px solid var(--gray-light);
 
 .subscribe h2 {
     font-size: 2.2rem;
-    line-height: 2.6rem;
+    line-height: 2.5rem;
 }
 
 /*  ##### ##### ##### FOOTER ##### ##### ##### */
 
 
 /* Footer Menus (top bar) */
-.footer a {
-    color: black;
-}
 
 .footer .footer-menus .footer-menus-container.flex-container{
     justify-content: space-between;

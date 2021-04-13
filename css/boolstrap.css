@@ -52,6 +52,10 @@ button {
     cursor: pointer;
 }
 
+input {
+    outline: none;
+}
+
 /*
 ######
 Layout
@@ -165,11 +169,6 @@ h3 {
 h4 { font-size: 1.8rem; }
 h5 { font-size: 1.6rem; }
 h6 { font-size: 1.5rem; }
-
-p {
-    margin-bottom: var(--spacing-standard);
-    margin-top: var(--spacing-standard);
-}
 
 /*
 #########
