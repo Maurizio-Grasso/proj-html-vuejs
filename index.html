@@ -37,13 +37,13 @@
 
                 <nav class="inner-wrapper">
 
-                    <ul class="main-menu inline-list text-white flex-container set-relative">
+                    <ul class="main-menu inline-list flex-container set-relative">
 
                         <!-- List Items Generati da Javascript -->
 
                         <li v-for="(item) in mainMenuItems"
                             v-html="printMenuItem(item)"
-                            :class="item.class"
+                            :class="item.class.join(' ')"
                             :onclick="item.onclick"
                             class="main-menu-item set-relative">
                         </li>

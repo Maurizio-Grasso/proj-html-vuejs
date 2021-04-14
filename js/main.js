@@ -3,6 +3,7 @@ var app = new Vue ( {
     data : {
 
         searchBoxOpen : false ,
+        mobileNavOpen : false ,
 
         mainMenuItems : [
 
@@ -26,10 +27,9 @@ var app = new Vue ( {
             //         }
             // }
 
-
             {
                 name :           'Home' ,
-                class :          'active-item' ,
+                class :          ['active-item' , 'collapse-on-mobile'] ,
                 childElement : {
                     tag :           'a' ,
                     class:          false ,
@@ -38,10 +38,10 @@ var app = new Vue ( {
                     } ,
                 }
             } ,
-
+            
             {
                 name :      'Apple' ,
-                class :     '' ,
+                class :     ['collapse-on-mobile'] ,
                 childElement : {
                     tag :      'a' ,
                     class: false ,
@@ -52,40 +52,7 @@ var app = new Vue ( {
             } ,
             {
                 name :      'Microsoft' ,
-                class :     '' ,
-                childElement : {
-                    tag :      'a' ,
-                    class: false ,
-                    attributes : {
-                        href : '' ,
-                    } ,
-                }
-            } ,
-            {
-                name :      'Android' ,
-                class :     '' ,
-                childElement : {
-                    tag :      'a' ,
-                    class: false ,
-                    attributes : {
-                        href : '' ,
-                    } ,
-                }
-            } ,
-            {
-                name :      'Forum' ,
-                class :     '' ,
-                childElement : {
-                    tag :      'a' ,
-                    class: false ,
-                    attributes : {
-                        href : '' ,
-                    } ,
-                }
-            } ,
-            {
-                name :      'Contact us' ,
-                class :     '' ,
+                class :     ['collapse-on-mobile'] ,
                 childElement : {
                     tag :      'a' ,
                     class: false ,
@@ -96,7 +63,52 @@ var app = new Vue ( {
             } ,
             {
                 name :           '' ,
-                class :          'outer-logo' ,
+                class :          [
+                    'collapse-button' , 
+                    'cursor-pointer'
+                ] ,
+                onclick:         'app.toggleVisibilityClass()',
+                childElement : {
+                    tag :   'i',
+                    class : 'fas fa-bars',
+                }
+            } ,
+            {
+                name :      'Android' ,
+                class :     ['collapse-on-mobile'] ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {
+                        href : '' ,
+                    } ,
+                }
+            } ,
+            {
+                name :      'Forum' ,
+                class :     ['collapse-on-mobile'] ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {
+                        href : '' ,
+                    } ,
+                }
+            } ,
+            {
+                name :      'Contact us' ,
+                class :     ['collapse-on-mobile'] ,
+                childElement : {
+                    tag :      'a' ,
+                    class: false ,
+                    attributes : {
+                        href : '' ,
+                    } ,
+                }
+            } ,
+            {
+                name :           '' ,
+                class :          ['outer-logo'] ,
                 childElement : {
                     tag :           'img' ,
                     class:          'header-logo cursor-pointer' ,
@@ -108,7 +120,7 @@ var app = new Vue ( {
             } ,
             {
                 name :      '' ,
-                class :     'search-button cursor-pointer' ,
+                class :     ['search-button' , 'cursor-pointer'] ,
                 onclick :   'app.searchBoxOpen = true' ,
                 childElement : {
                     tag :      'i' ,
@@ -117,12 +129,12 @@ var app = new Vue ( {
             } ,
             {
                 name :      'Join us' ,
-                class :     '' ,
+                class :     ['collapse-on-mobile'] ,
                 childElement : {
                     tag :      'button' ,
                     class: 'btn btn-black' ,
                     }
-            } ,
+            }
         ] ,
 
         copyrightBar : '&copy; Copyright 2012 - 2021' +
@@ -191,7 +203,19 @@ var app = new Vue ( {
             }
         ]
     } ,
+    mounted() {
+        this.toggleVisibilityClass();
+    } ,
     methods : {
+
+        toggleVisibilityClass() {
+            this.mainMenuItems.forEach(item => {
+                if(item.class.includes('collapse-on-mobile')){                        
+                    (item.class[item.class.length - 1] == 'item-hidden') ? item.class.pop() : item.class.push('item-hidden');
+                }
+            });
+        } ,
+
         printFooterMenu(menu) {
             var outputHtml = '';
             if(menu.childTag == 'p') {
@@ -232,7 +256,7 @@ var app = new Vue ( {
                     // Not Self Closing Tags
                     outputHtml += `${item.name}</${childElement.tag}>`;
                 }
-                console.log(outputHtml);
+                
                 return outputHtml;
 
             }
