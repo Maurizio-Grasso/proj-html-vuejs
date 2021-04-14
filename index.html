@@ -25,7 +25,7 @@
 
     <div class="outer-wrapper" id="app">
     
-        <header class="header">
+        <header class="header" >
             
             <!-- 
             Section Header-nav:
@@ -36,7 +36,7 @@
             <section class="header-nav">
                 
                     <nav class="inner-wrapper">
-                        <ul class="main-menu inline-list text-white flex-container">
+                        <ul class="main-menu inline-list text-white flex-container set-relative">
                             
                             <!-- List Items Generati da Javascript -->
                             
@@ -47,8 +47,16 @@
                                 class="main-menu-item set-relative">
                             </li>
 
+                            <!-- Box che appare cliccando sull'elemento search del menu -->
+
+                            <li v-if="searchBoxOpen" class="search-box padding-more">
+                                <input type="text" placeholder="Search Something" class="padding-standard">
+                                <button class="btn btn-black"><i class="fas fa-search"></i></button>
+                            </li>
+
                         </ul> <!-- Main Menu END -->
                     </nav> <!-- Inner Wrapper END -->
+
             </section> <!-- Header-Nav Section END -->
 
 
@@ -57,7 +65,7 @@
             Titolo H1 e pulsante di registrazione stagliati su un'immagine di sfondo
             -->
 
-            <section class="jumbotron">
+            <section class="jumbotron" @click="searchBoxOpen = false">
                 <div class="inner-wrapper">
                     <div class="inner-jumbotron flex-container">                        
                         <h1 class="text-white text-capitalized">tech forum!</h1>
@@ -72,7 +80,7 @@
         <!-- Main Start -->
 
 
-        <main class="main">
+        <main class="main" @click="searchBoxOpen = false">
             
             <!-- 
             Section Place-to-be: 
@@ -354,7 +362,7 @@
         <!-- Main END -->
 
 
-        <footer class="footer">
+        <footer class="footer" @click="searchBoxOpen = false">
             
             <!-- 
             Section footers-menu: 

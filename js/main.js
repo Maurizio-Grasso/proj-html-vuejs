@@ -2,7 +2,7 @@ var app = new Vue ( {
     el : '#app' ,
     data : {
 
-        logoSrc : 'img/logo-2x.png' ,
+        searchBoxOpen : false ,
         
         mainMenuItems : [
 
@@ -109,10 +109,13 @@ var app = new Vue ( {
             {
                 name :      '' ,
                 class :     'search-button cursor-pointer' ,
-                onclick :   'app.search()',
+                onclick :   'app.searchBoxOpen = true' ,
                 childElement : {
                     tag :      'i' ,
                     class: 'fas fa-search' ,
+                    // attributes : {
+                    //     'v-on:click.stop' : 'searchBoxOpen = true'
+                    // }
                     }
             } , 
             {
@@ -194,11 +197,6 @@ var app = new Vue ( {
     } ,
     methods : {
 
-        search() {
-            // Metodo richiamato al click sul pulsante di ricerca
-            alert("Search Button Clicked");
-        } ,
-
         printFooterMenu(menu) {
             var outputHtml = '';
             if(menu.childTag == 'p') {
@@ -239,7 +237,7 @@ var app = new Vue ( {
                     // Not Self Closing Tags
                     outputHtml += `${item.name}</${childElement.tag}>`;
                 }
-
+                console.log(outputHtml);
                 return outputHtml;
 
             }

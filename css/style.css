@@ -201,6 +201,24 @@ section.black-box a::after {
     border-right: 1.5rem solid transparent;
 }
 
+    /* Search Box */
+
+    li.search-box {
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: var(--color-primary);
+        border-top: 1px solid white;
+    }
+
+    .search-box input ,
+    .search-box .btn.btn-black {
+        height: 40px;
+        display: block;
+        float: left;
+    }
+    
+
 /*  ##### ##### ##### JUMBOTRON ##### ##### ##### */
 
 section.jumbotron {
