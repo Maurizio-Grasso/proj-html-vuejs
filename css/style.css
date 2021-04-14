@@ -1,7 +1,7 @@
 /*  ##### ##### ##### RESET & DEFAULTS ##### ##### ##### */
 
 :root {
---color-primary:    #27aabe;
+--color-primary:    rgba(37,169,189,0.97);
 --color-secondary:  #fc8c5e;
 --color-text:       #62676c;
 --gray-light:       #cfcfcf;
@@ -91,8 +91,6 @@ h4 {
     color:black;
 }
 
-
-
 /*  ##### ##### ##### UTILITIES ##### ##### ##### */
 
 .bg-lightgray {
@@ -105,7 +103,6 @@ h4 {
     font-weight: 400;
     text-transform: uppercase;
 }
-
 
 .custom-separator {
     max-width: 8rem;
@@ -132,7 +129,54 @@ section.black-box a::after {
     content: ' \27F6';
 }
 
+.zoom-effect-img-wrapper {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.zoom-effect-img-wrapper img{
+    transform: scale(1.15);
+    transition: all .5s;
+    opacity: 1;
+    cursor: pointer;
+}
+.zoom-effect-img-wrapper img:hover{
+    transform: scale(1);
+    opacity: .9;
+}
+
+/*  ##### ##### ##### ANIMATIONS ##### ##### ##### */
+
+@keyframes slide-from-bottom {
+    0% {
+        transform: translateY(5rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }   
+    25% {
+        opacity: 0;
+    }   
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fade-in .75s linear;
+}
+
+.slide-from-bottom {
+    animation: slide-from-bottom .75s linear;
+}
+
 /*  ##### ##### ##### HEADER NAV ##### ##### ##### */
+
 
 .header {
     margin-top: var(--header-nav-height);
@@ -207,8 +251,7 @@ section.black-box a::after {
         position: absolute;
         right: 0;
         top: 100%;
-        background-color: var(--color-primary);
-        border-top: 1px solid white;
+        background-color: rgba(37,169,189,0.85);
     }
 
     .search-box input ,
@@ -372,7 +415,7 @@ section.join-us {
     max-width: 500px;
 }
 
-/* subscribe*/
+/* Subscribe*/
 
 .subscribe .outer-input-form input {
 min-width: 300px;

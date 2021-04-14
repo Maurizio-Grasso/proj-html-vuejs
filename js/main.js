@@ -3,7 +3,7 @@ var app = new Vue ( {
     data : {
 
         searchBoxOpen : false ,
-        
+
         mainMenuItems : [
 
             //  Ogni oggetto di questo array corrisponderà ad un <li> del menu.
@@ -25,29 +25,29 @@ var app = new Vue ( {
             //             } ,
             //         }
             // }
-            
-            
-            {    
+
+
+            {
                 name :           'Home' ,
                 class :          'active-item' ,
                 childElement : {
                     tag :           'a' ,
                     class:          false ,
-                    attributes : {                            
+                    attributes : {
                         href :  '#' ,
-                    } ,                
+                    } ,
                 }
             } ,
-            
+
             {
                 name :      'Apple' ,
                 class :     '' ,
                 childElement : {
                     tag :      'a' ,
                     class: false ,
-                    attributes : {                            
+                    attributes : {
                         href : '' ,
-                    } ,                
+                    } ,
                 }
             } ,
             {
@@ -56,9 +56,9 @@ var app = new Vue ( {
                 childElement : {
                     tag :      'a' ,
                     class: false ,
-                    attributes : {                            
+                    attributes : {
                         href : '' ,
-                    } ,                
+                    } ,
                 }
             } ,
             {
@@ -67,9 +67,9 @@ var app = new Vue ( {
                 childElement : {
                     tag :      'a' ,
                     class: false ,
-                    attributes : {                            
+                    attributes : {
                         href : '' ,
-                    } ,                
+                    } ,
                 }
             } ,
             {
@@ -78,9 +78,9 @@ var app = new Vue ( {
                 childElement : {
                     tag :      'a' ,
                     class: false ,
-                    attributes : {                            
+                    attributes : {
                         href : '' ,
-                    } ,                
+                    } ,
                 }
             } ,
             {
@@ -89,21 +89,21 @@ var app = new Vue ( {
                 childElement : {
                     tag :      'a' ,
                     class: false ,
-                    attributes : {                            
+                    attributes : {
                         href : '' ,
-                    } ,                
+                    } ,
                 }
             } ,
-            {    
+            {
                 name :           '' ,
                 class :          'outer-logo' ,
                 childElement : {
                     tag :           'img' ,
                     class:          'header-logo cursor-pointer' ,
-                    attributes : {                            
+                    attributes : {
                             src :  'img/logo-2x.png' ,
                             alt : 'avada forum logo'
-                        } ,                
+                        } ,
                     }
             } ,
             {
@@ -113,11 +113,8 @@ var app = new Vue ( {
                 childElement : {
                     tag :      'i' ,
                     class: 'fas fa-search' ,
-                    // attributes : {
-                    //     'v-on:click.stop' : 'searchBoxOpen = true'
-                    // }
                     }
-            } , 
+            } ,
             {
                 name :      'Join us' ,
                 class :     '' ,
@@ -127,12 +124,12 @@ var app = new Vue ( {
                     }
             } ,
         ] ,
-        
+
         copyrightBar : '&copy; Copyright 2012 - 2021' +
-            ' &vert; Avada Theme by <a href="#">Theme Fusion</a> &vert; ' + 
+            ' &vert; Avada Theme by <a href="#">Theme Fusion</a> &vert; ' +
             'All Rights Reserved &vert; ' +
             'Powered by <a href="#">WordPress</a>' ,
-        
+
         footerMenus : [
             {
                 heading : 'avada tech forum' ,
@@ -143,36 +140,36 @@ var app = new Vue ( {
             {
                 heading : 'popular topics' ,
                 childTag : 'ul' ,
-                content : [ 'commodi blanditiis repudiandae illum officia porro' , 
-                            'eligendi deleniti dignissimos magni' , 
-                            'Repudiandae minus quis praesentium eligendi deleniti' , 
-                            'placeat dolore quia id elit' 
+                content : [ 'commodi blanditiis repudiandae illum officia porro' ,
+                            'eligendi deleniti dignissimos magni' ,
+                            'Repudiandae minus quis praesentium eligendi deleniti' ,
+                            'placeat dolore quia id elit'
                         ]
             } ,
 
             {
                 heading : 'recent topics' ,
                 childTag : 'ul' ,
-                content : [ 'Quibusdam praesentium sit amet' , 
-                            'Lorem ipsum dolor officia porro' , 
-                            'placeat dolore praesentium consectetur adipisicing' , 
-                            'ex laboriosam a quos quis fugit' 
+                content : [ 'Quibusdam praesentium sit amet' ,
+                            'Lorem ipsum dolor officia porro' ,
+                            'placeat dolore praesentium consectetur adipisicing' ,
+                            'ex laboriosam a quos quis fugit'
                         ]
             } ,
 
             {
                 heading : 'latest replies' ,
                 childTag : 'ul' ,
-                content : [ 'et cum eligendi sunt repellat' , 
-                            'consectetur eius nisi quos quis fugit officia porro' , 
-                            'cupiditate quos ullam voluptates' , 
-                            'repudiandae illum reprehenderit eum ratione' 
+                content : [ 'et cum eligendi sunt repellat' ,
+                            'consectetur eius nisi quos quis fugit officia porro' ,
+                            'cupiditate quos ullam voluptates' ,
+                            'repudiandae illum reprehenderit eum ratione'
                         ]
             } ,
 
         ] ,
 
-        footerSocialIcons : [ 
+        footerSocialIcons : [
             { name  : 'Facebook' ,
             iconHtml  : '<i class="fab fa-facebook-f"></i>' ,
             color : '#3c5998'
@@ -193,16 +190,14 @@ var app = new Vue ( {
               color : '#cd201f'
             }
         ]
-
     } ,
     methods : {
-
         printFooterMenu(menu) {
             var outputHtml = '';
             if(menu.childTag == 'p') {
                 outputHtml = menu.content;
             }
-            else if(menu.childTag == 'ul') {                
+            else if(menu.childTag == 'ul') {
                 menu.content.forEach( item => {
                     outputHtml += `<li><a href="#">${item}</a></li>`;
                 });
@@ -214,23 +209,23 @@ var app = new Vue ( {
         //  Questo metodo stampa le voci del menu principale in base ai dati contentui nell'array 'mainMenuItems'
 
             if(!item.childElement) {
-                return item.name;            
+                return item.name;
             }
-            
-            else {                
+
+            else {
                 var childElement = item.childElement;
-                var outputHtml = `<${childElement.tag}`; 
-                
+                var outputHtml = `<${childElement.tag}`;
+
                 if(childElement.class){
                     outputHtml += ` class="${childElement.class}"`;
                 }
-                
+
                 if(childElement.attributes){
                     for(let key in childElement.attributes) {
                         outputHtml += ` ${key}="${childElement.attributes[key]}"`;
                     }
                 }
-                
+
                 outputHtml += '>';
 
                 if(childElement.tag != 'img') {

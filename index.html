@@ -24,53 +24,54 @@
 <body>
 
     <div class="outer-wrapper" id="app">
-    
+
         <header class="header" >
-            
-            <!-- 
+
+            <!--
             Section Header-nav:
             Sezione in posizione fissa contenente logo e menu principale.
             Tutti i list item che compongono il menu vengono generati tramite Javascript
             -->
 
             <section class="header-nav">
-                
-                    <nav class="inner-wrapper">
-                        <ul class="main-menu inline-list text-white flex-container set-relative">
-                            
-                            <!-- List Items Generati da Javascript -->
-                            
-                            <li v-for="(item) in mainMenuItems" 
-                                v-html="printMenuItem(item)"
-                                :class="item.class"
-                                :onclick="item.onclick"
-                                class="main-menu-item set-relative">
-                            </li>
 
-                            <!-- Box che appare cliccando sull'elemento search del menu -->
+                <nav class="inner-wrapper">
 
-                            <li v-if="searchBoxOpen" class="search-box padding-more">
-                                <input type="text" placeholder="Search Something" class="padding-standard">
-                                <button class="btn btn-black"><i class="fas fa-search"></i></button>
-                            </li>
+                    <ul class="main-menu inline-list text-white flex-container set-relative">
 
-                        </ul> <!-- Main Menu END -->
-                    </nav> <!-- Inner Wrapper END -->
+                        <!-- List Items Generati da Javascript -->
+
+                        <li v-for="(item) in mainMenuItems"
+                            v-html="printMenuItem(item)"
+                            :class="item.class"
+                            :onclick="item.onclick"
+                            class="main-menu-item set-relative">
+                        </li>
+
+                        <!-- Box che appare cliccando sull'elemento search del menu -->
+
+                        <li v-if="searchBoxOpen" class="search-box padding-more">
+                            <input type="text" placeholder="Search Something" class="padding-standard">
+                            <button class="btn btn-black"><i class="fas fa-search"></i></button>
+                        </li>
+
+                    </ul> <!-- Main Menu END -->
+                </nav> <!-- Inner Wrapper END -->
 
             </section> <!-- Header-Nav Section END -->
 
 
-            <!-- 
-            Section Jumbotron: 
+            <!--
+            Section Jumbotron:
             Titolo H1 e pulsante di registrazione stagliati su un'immagine di sfondo
             -->
 
             <section class="jumbotron" @click="searchBoxOpen = false">
                 <div class="inner-wrapper">
-                    <div class="inner-jumbotron flex-container">                        
-                        <h1 class="text-white text-capitalized">tech forum!</h1>
-                        <p class="text-white margin-t-more margin-b-more padding-t-standard padding-b-standard">Discuss all the latest technology news and trends</p>
-                        <button class="btn btn-primary"> get avada now!</button>
+                    <div class="inner-jumbotron flex-container">
+                        <h1 class="text-white text-capitalized  slide-from-bottom">tech forum!</h1>
+                        <p class="text-white margin-t-more margin-b-more padding-t-standard padding-b-standard  slide-from-bottom">Discuss all the latest technology news and trends</p>
+                        <button class="btn btn-primary fade-in"> get avada now!</button>
                     </div>
                 </div> <!-- Inner Wrapper END -->
             </section> <!-- Jumbotron Section END-->
@@ -81,9 +82,9 @@
 
 
         <main class="main" @click="searchBoxOpen = false">
-            
-            <!-- 
-            Section Place-to-be: 
+
+            <!--
+            Section Place-to-be:
             Testo di dimensioni maggiori su sfondo grigio, come introduzione al prodotto
             -->
 
@@ -94,15 +95,15 @@
                     <p>Quibusdam praesentium, voluptatem placeat dolore, officia porro voluptatum et cum eligendi deleniti, cupiditate quos quis fugit molestiae iure repudiandae. Minima, repudiandae illum.</p>
                 </div>
             </section><!-- Place-to-Be section END -->
-            
 
-            <!-- 
+
+            <!--
             Sezione latest-news:
             sezione più importante e più lunga della pagina.
             Contiene una lista di 9 box (di diverse dimensioni) disposti a griglia
             -->
 
-            <section class="latest-news">                                
+            <section class="latest-news">
                 <div class="inner-wrapper high-padding-section text-center">
 
                     <span class="text-more-spacing margin-b-more text-black">phasellus eget mesus</span>
@@ -114,7 +115,9 @@
 
                         <!-- Simple Box #1 START -->
                         <div class="single-news-box article-preview blog-post-preview">
-                            <img class="article-image margin-b-standard" src="img/post_feat_img_25-320x202.jpg" alt="article image preview">
+                            <div class="zoom-effect-img-wrapper margin-b-standard">
+                                <img class="article-image" src="img/post_feat_img_25-320x202.jpg" alt="article image preview">
+                            </div>
                             <h4 class="article-title margin-b-standard"><a href="#">Morbi vitae dui euismod vulputate sollicitudin</a></h4>
                             <span class="article-metadata margin-b-standard">October 11, 2015 &vert; <a href="#">2 comments</a></span>
                             <p class="article-excerpt">Donec finibus sit amet orci eget ultricies. Praesent posuere ante ut erat fringilla, vestibulum placerat metus mattis. Aenean dictum vitae nisl</p>
@@ -122,22 +125,26 @@
 
 
                         <!-- Simple Box #2 START -->
-                        <div class="single-news-box article-preview blog-post-preview">                            
-                            <img class="article-image margin-b-standard" src="img/post_feat_img_24-320x202.jpg" alt="article image preview">
+                        <div class="single-news-box article-preview blog-post-preview">
+                            <div class="zoom-effect-img-wrapper margin-b-standard">
+                                <img class="article-image" src="img/post_feat_img_24-320x202.jpg" alt="article image preview">
+                            </div>
                             <h4 class="article-title margin-b-standard"><a href="#">Vivamus pellenteque, felis quis varius</a></h4>
                             <span class="article-metadata margin-b-standard">October 11, 2015 &vert; comments off</span>
                             <p class="article-excerpt">Donec finibus sit amet orci eget ultricies. Praesent posuere ante ut erat fringilla, vestibulum placerat metus mattis. Aenean dictum vitae nisl</p>
                         </div><!-- Simple Box (Box #2 of 9) END -->
-                        
+
 
                         <!-- Simple Box #3 START -->
-                        <div class="single-news-box article-preview blog-post-preview">                            
-                            <img class="article-image margin-b-standard" src="img/post_feat_img_23-320x202.jpg" alt="article image preview">
+                        <div class="single-news-box article-preview blog-post-preview">
+                            <div class="zoom-effect-img-wrapper margin-b-standard">
+                                <img class="article-image" src="img/post_feat_img_23-320x202.jpg" alt="article image preview">
+                            </div>
                             <h4 class="article-title margin-b-standard"><a href="#">Donec ornare pretium eget scelisque justo</a></h4>
                             <span class="article-metadata margin-b-standard">October 11, 2015 &vert; comments off</span>
                             <p class="article-excerpt">Donec finibus sit amet orci eget ultricies. Praesent posuere ante ut erat fringilla, vestibulum placerat metus mattis. Aenean dictum vitae nisl</p>
                         </div><!-- Simple Box (Box #3 of 9) END -->
-                        
+
 
                         <!-- Featured Article Box #4 START -->
                         <div class="single-news-box featured-article featured-blog-post text-white">
@@ -150,7 +157,9 @@
 
                         <!-- Simple Box #5 START -->
                         <div class="single-news-box article-preview blog-post-preview">
-                            <img class="article-image margin-b-standard" src="img/post_feat_img_22-320x202.jpg" alt="article image preview">
+                            <div class="zoom-effect-img-wrapper margin-b-standard">
+                                <img class="article-image" src="img/post_feat_img_22-320x202.jpg" alt="article image preview">
+                            </div>
                             <h4 class="article-title margin-b-standard"><a href="#">Fusce sollicitudin nunc sed placerat varius</a></h4>
                             <span class="article-metadata margin-b-standard">October 11, 2015 &vert; <a href="#">2 comments</a></span>
                             <p class="article-excerpt">Donec finibus sit amet orci eget ultricies. Praesent posuere ante ut erat fringilla, vestibulum placerat metus mattis. Aenean dictum vitae nisl</p>
@@ -158,17 +167,21 @@
 
 
                         <!-- Simple Box #6 START -->
-                        <div class="single-news-box article-preview blog-post-preview">                            
-                            <img class="article-image margin-b-standard" src="img/post_feat_img_21-320x202.jpg" alt="article image preview">
+                        <div class="single-news-box article-preview blog-post-preview">
+                            <div class="zoom-effect-img-wrapper margin-b-standard">
+                                <img class="article-image" src="img/post_feat_img_21-320x202.jpg" alt="article image preview">
+                            </div>
                             <h4 class="article-title margin-b-standard"><a href="#">Donec facilis sodales leo sit amet laoreet</a></h4>
                             <span class="article-metadata margin-b-standard">October 11, 2015 &vert; comments off</span>
                             <p class="article-excerpt">Donec finibus sit amet orci eget ultricies. Praesent posuere ante ut erat fringilla, vestibulum placerat metus mattis. Aenean dictum vitae nisl</p>
                         </div><!-- Simple Box (Box #6 of 9) END -->
-                        
+
 
                         <!-- Simple Box #7 START -->
-                        <div class="single-news-box article-preview blog-post-preview">                            
-                            <img class="article-image margin-b-standard" src="img/post_feat_img_20-320x202.jpg" alt="article image preview">
+                        <div class="single-news-box article-preview blog-post-preview">
+                            <div class="zoom-effect-img-wrapper margin-b-standard">
+                                <img class="article-image" src="img/post_feat_img_20-320x202.jpg" alt="article image preview">
+                            </div>
                             <h4 class="article-title margin-b-standard"><a href="#">Proin eu purus sed aru aliquet curabir vens</a></h4>
                             <span class="article-metadata margin-b-standard">October 11, 2015 &vert; comments off</span>
                             <p class="article-excerpt">Donec finibus sit amet orci eget ultricies. Praesent posuere ante ut erat fringilla, vestibulum placerat metus mattis. Aenean dictum vitae nisl</p>
@@ -189,36 +202,42 @@
 
                             <h3>Tutorials & Guides</h3>
                             <hr class="custom-separator">
-                                                        
-                            <div class="article-preview tutorial-preview margin-b-more clearfix">                            
-                                <img class="article-image margin-r-standard float-left" src="img/post_feat_img_23-177x142.jpg" alt="article image preview">
+
+                            <div class="article-preview tutorial-preview margin-b-more clearfix">
+                                <div class="zoom-effect-img-wrapper margin-b-standard margin-r-standard float-left">
+                                    <img class="article-image" src="img/post_feat_img_23-177x142.jpg" alt="article image preview">
+                                </div>
                                 <h4 class="article-title margin-b-standard"><a href="#">Donec ornare pretium eget scelisque justo</a></h4>
                                 <span class="article-metadata">October 11, 2015 &vert; comments off</span>
                             </div> <!--Nested Box #1 of 3 END -->
 
-                            <div class="article-preview tutorial-preview margin-b-more clearfix">                            
-                                <img class="article-image margin-r-standard float-left" src="img/post_feat_img_22-177x142.jpg" alt="article image preview">
+                            <div class="article-preview tutorial-preview margin-b-more clearfix">
+                                <div class="zoom-effect-img-wrapper margin-b-standard margin-r-standard float-left">
+                                    <img class="article-image" src="img/post_feat_img_22-177x142.jpg" alt="article image preview">
+                                </div>
                                 <h4 class="article-title margin-b-standard"><a href="#">Fusce sollicitudin nunc sed placerat varius</a></h4>
                                 <span class="article-metadata">October 11, 2015 &vert; comments off</span>
                             </div> <!--Nested Box #2 of 3 END -->
 
-                            <div class="article-preview tutorial-preview clearfix">                            
-                                <img class="article-image margin-r-standard float-left" src="img/post_feat_img_20-177x142.jpg" alt="article image preview">
+                            <div class="article-preview tutorial-preview clearfix">
+                                <div class="zoom-effect-img-wrapper margin-r-standard float-left">
+                                    <img class="article-image" src="img/post_feat_img_20-177x142.jpg" alt="article image preview">
+                                </div>
                                 <h4 class="article-title margin-b-standard"><a href="#">Proin eu purus sed aru aliquet curabir vens</a></h4>
                                 <span class="article-metadata">October 11, 2015 &vert; comments off</span>
                             </div> <!--Nested Box #3 of 3 END -->
                         </div> <!-- Latest tutorials (Box #9 of 9) END -->
 
-                    </div> <!-- Box Container END -->                                    
+                    </div> <!-- Box Container END -->
                 </div> <!-- Inner Wrapper Section END -->
             </section> <!-- Latest-News Section END -->
 
 
-            <!-- 
+            <!--
             Sezione go-to-blog:
             Call to Action su sfondo nero che rimanda al blog
             -->
-            
+
             <section class="go-to-blog black-box set-relative text-uppercase text-white cursor-pointer">
                 <div class="inner-wrapper">
                     <a  class="align-x-y padding-more" href="#">read our blog</a>
@@ -226,7 +245,7 @@
             </section><!-- Go-To-Blog Section END -->
 
 
-            <!-- 
+            <!--
             Sezione forum-sections:
             Griglia contenente le 8 sezioni del forum
             -->
@@ -247,7 +266,7 @@
                             <h3>news & community</h3>
                         </div>
 
-                        <!-- item #2 of 8 -->                        
+                        <!-- item #2 of 8 -->
                         <div class="forum-section-card">
                             <span class="section-icon">
                                 <i class="fab fa-apple"></i>
@@ -262,7 +281,7 @@
                             </span>
                             <h3>microsoft forum</h3>
                         </div>
-                        
+
                         <!-- item #4 of 8 -->
                         <div class="forum-section-card">
                             <span class="section-icon">
@@ -271,7 +290,7 @@
                             <h3>android forum</h3>
                         </div>
 
-                        
+
                         <!-- item #5 of 8 -->
                         <div class="forum-section-card">
                             <span class="section-icon">
@@ -280,7 +299,7 @@
                             <h3>general discussion</h3>
                         </div>
 
-                        
+
                         <!-- item #6 of 8 -->
                         <div class="forum-section-card">
                             <span class="section-icon">
@@ -289,7 +308,7 @@
                             <h3>apps & software</h3>
                         </div>
 
-                        
+
                         <!-- item #7 of 8 -->
                         <div class="forum-section-card">
                             <span class="section-icon">
@@ -298,7 +317,7 @@
                             <h3>gadgets & stuff</h3>
                         </div>
 
-                        
+
                         <!-- item #8 of 8 -->
                         <div class="forum-section-card">
                             <span class="section-icon">
@@ -312,8 +331,8 @@
             </section> <!-- Forum Sections END -->
 
 
-            <!-- 
-            Section go-to-forum: 
+            <!--
+            Section go-to-forum:
             Call to Action su sfondo nero che rimanda al forum
             -->
 
@@ -323,13 +342,13 @@
                 </div>
             </section><!-- Go to Forum END -->
 
-            
-            <!-- 
-            Section join-us: 
+
+            <!--
+            Section join-us:
             Call to Action che invita ad iscriversi al servizio
             -->
 
-            <section class="join-us">
+            <section class="join-us high-padding-section">
                 <div class="inner-wrapper high-padding-section text-center">
 
                     <h2 class="margin-b-more text-white">Hey! Join Our Community</h2>
@@ -341,8 +360,8 @@
             </section><!-- Join Section END-->
 
 
-            <!-- 
-            Section Subscribe: 
+            <!--
+            Section Subscribe:
             Form di iscrizione alla newsletter
             -->
 
@@ -355,7 +374,7 @@
                     </div>
                 </div>
             </section><!--Subscribe Section END-->
-            
+
         </main>
 
 
@@ -363,16 +382,16 @@
 
 
         <footer class="footer" @click="searchBoxOpen = false">
-            
-            <!-- 
-            Section footers-menu: 
+
+            <!--
+            Section footers-menu:
             Area superiore del footer composta da menu o testo preceduti da un titolo
             Viene popolata tramite Javascript
             -->
 
             <section class="footer-menus">
                 <div class="inner-wrapper high-padding-section">
-                    
+
                     <div class="footer-menus-container flex-container">
                         <div v-for="(menu) in footerMenus"
                              class="single-footer-menu-outer"
@@ -383,8 +402,8 @@
             </section><!-- Footer-Menus Section END -->
 
 
-            <!-- 
-            Section footer-bottom-bar: 
+            <!--
+            Section footer-bottom-bar:
             Area inferiore del footer composta dalla copyright bar
             e dalle icone social
             -->
@@ -398,8 +417,8 @@
 
                     <nav class="social-icons">
                         <ul class="inline-list text-center text-white">
-                            <li v-for="icon in footerSocialIcons" 
-                                v-html="icon.iconHtml" 
+                            <li v-for="icon in footerSocialIcons"
+                                v-html="icon.iconHtml"
                                 :style="'background-color:'+icon.color+';'"
                                 class="cursor-pointer margin-l-more"
                             ></li>
@@ -407,7 +426,7 @@
                     </nav>
                 </div><!-- Inner Wrapper END -->
             </section><!-- Footer-bottom-Bar Section END -->
-            
+
         </footer>
 
     </div><!-- App END -->
