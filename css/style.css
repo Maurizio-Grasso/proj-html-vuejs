@@ -1,27 +1,13 @@
 /*  ##### ##### ##### RESET & DEFAULTS ##### ##### ##### */
 
-
-/*
-    Breakpoints:
-         640px
-        1024px
-        1100px
-*/
-
 :root {
     --color-primary:    rgba(37,169,189,0.97);
     --color-secondary:  #fc8c5e;
     --color-text:       #62676c;
     --gray-light:       #e6e6e6;
     
+    --header-nav-height:    10rem;
     --spacing-more: calc(var(--spacing-standard) * 3); /* = 30px */    
-    --header-nav-height:    initial;
-}
-
-@media screen and (min-width:1100px) {
-    :root {
-        --header-nav-height:    10rem;
-    }
 }
 
 body {
@@ -83,10 +69,6 @@ button {
 
 /*  ##### ##### ##### HEADINGS ##### ##### ##### */
 
-h1 {
-    font-size: 15rem;
-    line-height: 15rem;
-}
 
 h2 {
     font-size: 4rem;
@@ -148,22 +130,22 @@ section.black-box a::after {
 }
 
 .zoom-effect-img-wrapper {
-    display: inline-block;
+    display: block;
     overflow: hidden;
 }
 
-.zoom-effect-img-wrapper img{
+.zoom-effect-img-wrapper * {
     transform: scale(1.15);
     transition: all .5s;
     opacity: 1;
     cursor: pointer;
 }
-.zoom-effect-img-wrapper img:hover{
+.zoom-effect-img-wrapper *:hover{
     transform: scale(1);
     opacity: .9;
 }
 
-/*  ##### ##### ##### ANIMATIONS ##### ##### ##### */
+/*  ##### ##### ##### ANIMATIONS ( desktop only )##### ##### ##### */
 
 @keyframes slide-from-bottom {
     0% {
@@ -173,6 +155,7 @@ section.black-box a::after {
         transform: translateY(0);
     }
 }
+
 @keyframes fade-in {
     0% {
         opacity: 0;
@@ -185,12 +168,16 @@ section.black-box a::after {
     }
 }
 
-.fade-in {
-    animation: fade-in .75s linear;
-}
+@media screen and (min-width:1101px) {
+    
+    .fade-in {
+        animation: fade-in .75s linear;
+    }
+    
+    .slide-from-bottom {
+        animation: slide-from-bottom .75s linear;
+    }
 
-.slide-from-bottom {
-    animation: slide-from-bottom .75s linear;
 }
 
 /*  ##### ##### ##### HEADER NAV ##### ##### ##### */
@@ -200,7 +187,9 @@ section.black-box a::after {
 }
 
 .header {
-    margin-top: var(--header-nav-height);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .header .header-nav {
@@ -208,8 +197,14 @@ section.black-box a::after {
     color: var(--color-text);
 }
 
-@media screen and (min-width:1100px) {
+@media screen and (min-width:1101px) {
 
+    .header {
+        display: block;
+        margin-top: var(--header-nav-height);
+        height: auto;
+    }
+    
     .header .header-nav {
         position: fixed;
         top: 0;
@@ -222,14 +217,14 @@ section.black-box a::after {
 }
 
 .main-menu.flex-container {
-    height: var(--header-nav-height);
     flex-wrap: wrap;
     padding: 2rem 0;
 }
 
-@media screen and (min-width:1100px) {
-
+@media screen and (min-width:1101px) {
+    
     .main-menu.flex-container {
+        height: var(--header-nav-height);
         justify-content: flex-end;
         flex-wrap: nowrap;
         padding: initial;
@@ -242,7 +237,7 @@ section.black-box a::after {
     height: 5rem;
     line-height: 5rem;        
     margin: 0 2rem;
-    padding-left: var(--spacing-standard);
+    padding-left: 1.5rem;
     transition: background-color .5s;
 }
 .main-menu .main-menu-item:hover {    
@@ -252,7 +247,7 @@ section.black-box a::after {
     border: none;
 }
 
-@media screen and (min-width:1100px) {
+@media screen and (min-width:1101px) {
     
     .main-menu .main-menu-item {
         flex-basis: auto;
@@ -297,7 +292,7 @@ section.black-box a::after {
     display: none;
 }
 
-@media screen and (min-width:1100px) {
+@media screen and (min-width:1101px) {
 
     .main-menu .main-menu-item.collapse-button {    
         display: none;
@@ -322,7 +317,7 @@ section.black-box a::after {
     font-weight: 400;
 }
 
-@media screen and (min-width:1100px) {
+@media screen and (min-width:1101px) {
     .main-menu .main-menu-item button {
         display: initial;
         font-weight: 700;
@@ -341,7 +336,7 @@ section.black-box a::after {
     max-height: 6rem;
 }
 
-@media screen and (min-width:1100px) {
+@media screen and (min-width:1101px) {
 
     .main-menu .main-menu-item.outer-logo {
         flex: 1 0 auto;
@@ -360,7 +355,7 @@ section.black-box a::after {
     display: none;
 }
 
-@media screen and (min-width:1100px) {
+@media screen and (min-width:1101px) {
     .main-menu .search-button {
         order: 1;
         display: initial;
@@ -371,7 +366,7 @@ section.black-box a::after {
     }
 }
 
-@media screen and (min-width:1100px) {
+@media screen and (min-width:1101px) {
     
     .main-menu .main-menu-item.active-item::after , 
     .main-menu .main-menu-item:not(.search-button):not(.outer-logo):hover::after {
@@ -400,32 +395,75 @@ section.black-box a::after {
     .search-box .btn.btn-black {
         display: block;
         float: left;
-    }
-    
+    }    
 
 /*  ##### ##### ##### JUMBOTRON ##### ##### ##### */
 
 section.jumbotron {
-    background-image: url('../img/home_slider_bg.jpg');
-    background-position: center;
-    background-size: cover;
-}
-
-.inner-jumbotron.flex-container {
-    min-height: calc(100vh - var(--header-nav-height));
+    flex-grow: 1;
+    padding: 1.5rem;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
+    background-image: url('../img/home_slider_bg.jpg');
+    background-position: center;
+    background-size: cover;
+
+}
+
+
+.jumbotron > .inner-wrapper ,
+.inner-jumbotron {
+    display: contents; /* mobile only */
+}
+
+
+.jumbotron h1 {
+    font-size: 6rem;
+    line-height: 7rem;
 }
 
 .jumbotron p {
-    font-size: 2.4rem;
-    line-height: 3rem;
+    font-size: 4rem;
+    line-height: 5rem;
 }
 
 .jumbotron button.btn {
     padding: 1.7rem 4rem;
     font-size: 1.8rem;
+}
+
+@media screen and (min-width:1101px) {
+    
+    section.jumbotron {
+        display: block;
+        padding: initial;
+    }
+    
+    .jumbotron > .inner-wrapper {
+        display: block;
+    }
+    
+    .inner-jumbotron {
+        min-height: calc(100vh - var(--header-nav-height));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .jumbotron h1 {
+        font-size: 15rem;
+        line-height: 15rem;
+    }
+
+    .jumbotron p {
+        font-size: 2.4rem;
+        line-height: 3rem;
+    }
+
 }
 
 /*  ##### ##### ##### MAIN ##### ##### ##### */
@@ -445,6 +483,7 @@ section.place-to-be p {
 /* Latest News Section */
 
         /* Layout */
+
 .news-box-container.flex-container {    
     flex-wrap: wrap;
     justify-content: space-between;
@@ -452,17 +491,29 @@ section.place-to-be p {
 }
 
 .news-box-container .single-news-box {
-    flex : 0 0 calc( (100% - ( var(--spacing-more) * 2 ) ) / 3 );    
+    flex : 0 0 100%;
     margin-bottom: var(--spacing-more);
 }
 
-.news-box-container .single-news-box.featured-blog-post {
-    flex-basis: 100%;
+@media screen and (min-width:769px) {
+
+    .news-box-container > .single-news-box.article-preview {
+        flex : 0 0 calc( (100% - ( var(--spacing-more) * 2 ) ) / 3 );    
+    }
+
 }
 
-.news-box-container .single-news-box.featured-review {
-    flex-basis: calc( (100% - var(--spacing-standard) ) / 3 * 2 );
+@media screen and (min-width:1025px) {
+
+    .news-box-container .single-news-box.featured-review {
+        flex-basis: calc( (100% - var(--spacing-standard) ) / 3 * 2 );
+    }
+
+    .news-box-container .single-news-box.latest-tutorials {
+        flex : 0 0 calc( (100% - ( var(--spacing-more) * 2 ) ) / 3 );    
+    }
 }
+
 
 /* Latest News Section (Sigle Card) */
 
@@ -519,9 +570,10 @@ img.article-image {
 }
 
 .forum-section-card {
-    flex: 0 0 27.5rem;
+    flex: 0 0 100%;
+    margin-bottom: 2rem;
     height: 27.5rem;
-    margin-bottom: calc(100px / 3);
+    
 
     display: flex;
     flex-direction: column;
@@ -533,6 +585,21 @@ img.article-image {
     border-top: 2px solid var(--color-primary);
 }
 
+@media screen and (min-width:641px) {
+
+    .forum-section-card {
+        flex: 0 0 calc( (100% - 2rem) / 2);
+    }
+}
+
+@media screen and (min-width:1025px) {
+    
+    .forum-section-card {
+        flex: 0 0 calc( (100% - 4rem) / 4);
+    }
+
+}
+
 .forum-section-card .section-icon {
     width: 8rem;
     height: 8rem;
@@ -542,6 +609,7 @@ img.article-image {
     color: white;
     background-color: var(--color-secondary);
     border-radius: 50%;
+    cursor: pointer;
 }
 
 /* Join US */

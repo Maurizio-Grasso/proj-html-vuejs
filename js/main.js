@@ -3,7 +3,6 @@ var app = new Vue ( {
     data : {
 
         searchBoxOpen : false ,
-        mobileNavOpen : false ,
 
         mainMenuItems : [
 
@@ -209,6 +208,10 @@ var app = new Vue ( {
     methods : {
 
         toggleVisibilityClass() {
+        
+        // Questo metodo aggiunge (se assente) o rimuove (se presente) 
+        // la stringa 'item-hidden' all'array this.mainMenuItems.class
+
             this.mainMenuItems.forEach(item => {
                 if(item.class.includes('collapse-on-mobile')){                        
                     (item.class[item.class.length - 1] == 'item-hidden') ? item.class.pop() : item.class.push('item-hidden');
@@ -217,6 +220,10 @@ var app = new Vue ( {
         } ,
 
         printFooterMenu(menu) {
+        
+        //  Questo metodo restituisce la stringa corrispondente ad una sotto-sezione del footer
+        //  Che verrà stampata nel DOM
+
             var outputHtml = '';
             if(menu.childTag == 'p') {
                 outputHtml = menu.content;
@@ -230,13 +237,16 @@ var app = new Vue ( {
         } ,
 
         printMenuItem(item) {
-        //  Questo metodo stampa le voci del menu principale in base ai dati contentui nell'array 'mainMenuItems'
+
+        //  Questo metodo stampa le voci del menu principale in base ai dati 
+        //  contentui nell'array 'this.mainMenuItems'
 
             if(!item.childElement) {
                 return item.name;
             }
 
             else {
+                // Se esistono elementi figli, costruisce la stringa opportuna da restituire 
                 var childElement = item.childElement;
                 var outputHtml = `<${childElement.tag}`;
 
@@ -252,8 +262,9 @@ var app = new Vue ( {
 
                 outputHtml += '>';
 
-                if(childElement.tag != 'img') {
-                    // Not Self Closing Tags
+                if( (childElement.tag != 'img') && (childElement.tag != 'input') && (childElement.tag != 'hr') ) {
+                    // Chiusura del tan nel caso questo non sia un 'self-closing'
+                    // (sono supportati i self-closing tag più comuni)
                     outputHtml += `${item.name}</${childElement.tag}>`;
                 }
                 
